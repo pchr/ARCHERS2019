@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Panagiotopoulos IACM ARCHERS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="reveal.js-3.8.0/css/reveal.css">
+        <link rel="stylesheet" href="reveal.js-3.8.0/css/theme/moon.css">
+        <link rel="stylesheet" href="reveal.js-3.8.0/plugin/toc-progress/toc-progress.css">
+        <script src="app/app1.js" type="text/javascript"></script>
+        <link href="app/app1.css" rel="stylesheet" type="text/css"/>
+        
+        <style>
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+                <section data-state="no-toc-progress">
+                        <h2 class="no-toc-progress">ARCHERS Project</h2>
+                        Numerical methods and development of Imaging techniques for Structural Health Monitoring applications
+                        <p><small>Talk by <a href="http://www.iacm.forth.gr/index_people.php?l=en&group=0&page=people&pageid=86">Christos G. Panagiotopoulos</a> from <a href="http://www.iacm.forth.gr">IACM-FORTH</a></small></p>
+                        <!--<p id="date"></p>-->
+                        <p><small>Tuesday 23 July 2019</small></p>
+                        <script> document.getElementById("date").innerHTML = "<small>"+Date()+"</small>";</script> 
+                </section>
+
+                <section>
+                    <h2>Contents</h2>
+                     <ol>
+                        <li>Stretching Method based Operational Modal Analysis</li>
+                        <li>Time Reversal in Structural Analysis</li>
+                        <li>Acoustic Emission in Elastic Medium</li>
+                        <li>Interface Crack Initiation and Growth in Composite Materials</li>
+                        <li>Subsidiary</li>
+                     </ol> 
+                    <div id="whitefontSec" style="font-size:20px">In each section an introductory (title) slide appears, on which, publications or other relevant activity are mentioned. Part of this research has been held during and supported by ARCHERS project.</div>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Stretching Method based Operational Modal Analysis</h2>
+                        <aside class="notes">
+                                Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit »S« on your keyboard).
+                        </aside>
+                        <div id="div1">
+                            - E. Daskalakis, C. Panagiotopoulos, C. Tsogka, N. Melis, J. Kalogeras, Stretching method based operational modal analysis of an old masonry lighthouse, under preparation to be submitted for Special Issue "Smart Sensors for Structural Health Monitoring" – Journal Sensors
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Structural health monitoring (SHM)</h3>
+                        <ol style="font-size:20px">
+                            <li class="fragment fade-in">The process of implementing a damage detection and characterization strategy for engineering structures.</li>
+                            <li class="fragment fade-in">Damage is defined as changes to the material and/or geometric properties of a structural system, including changes to the boundary conditions and system connectivity, which adversely affect the system's performance.</li>
+                            <li class="fragment fade-in">The SHM process involves the observation of a system over time using periodically sampled response measurements from an array of sensors (often inertial accelerometers), the extraction of damage-sensitive features from these measurements, and the statistical analysis of these features to determine the current state of system health.</li>
+                            <li class="fragment fade-in">Long term SHM, the output of this process is periodically updated information regarding the ability of the structure to perform its intended function in light of the inevitable aging and degradation resulting from operational environments.</li>
+                            <li class="fragment fade-in">The process of implementing a damage detection and characterization strategy for engineering structures.</li>
+                            <li class="fragment fade-in">After extreme events, such as earthquakes or blast loading, SHM is used for rapid condition screening and aims to provide, in near real time, reliable information regarding the integrity of the structure.</li>
+                            <li class="fragment fade-in">As part of the rapid developments in data-driven technologies, that are transforming many fields in engineering and science, machine learning and computer vision techniques are increasingly capable of reliably diagnosing and classifying patterns in image data, which has clear applications in inspection contexts.</li>
+                        </ol>
+                        <div id="whitefontSec_" style="font-size:15px"><a href="https://en.wikipedia.org/wiki/Structural_health_monitoring" target="_blank">https://en.wikipedia.org/wiki/Structural_health_monitoring</a></div>
+                    </section>
+                    <section>
+                        <h3>Operational modal analysis</h3>
+                        <ol style="font-size:20px">
+                            <li class="fragment fade-in">The field of engineering that studies the modal properties of systems under ambient or normal operating conditions.</li>
+                            <li class="fragment fade-in">Modal properties are considered to be natural frequencies, damping and mode shapes.</li>
+                            <li class="fragment fade-in">Excitation is not known yet is assumed to have, approximately, white noise characteristics.</li>
+                            <li class="fragment fade-in">Modal characteristics can be used to identify basic properties (geometric, material, etc.) of the structure. Usually this is accomplished by correlating the dynamic characteristics of a mathematical model with physical properties derived from experimental measurements.</li>
+                       </ol>
+                        <h3>Methods</h3>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in">time domain (e.g., stochastic subspace identification),</li>
+                            <li class="fragment fade-in">frequency domain (e.g., frequency domain decomposition)</li>
+                       </ul>
+                        <div style="font-size:20px" class="fragment fade-in" >
+                            -and to-
+                        </div>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in">non-Bayesian,</li>
+                            <li class="fragment fade-in">Bayesian</li>
+                       </ul>
+                        <div style="font-size:20px" class="fragment fade-in" >
+                            Stretching method could be considered as a non-Bayesian, frequency domain, operational modal analysis method.
+                        </div>
+                    </section>
+                    <section   data-background-image="media/Chatzidakis1.jpeg" data-background-opacity="0.1">
+                        <h3>Stretching method in the SHM context</h3>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in"> The Stretching Method (SM) is widely used in passive imaging applications mostly related to Geophysics</li>
+                            <li class="fragment fade-in"> The key idea of the method is to estimate how much we need to stretch a signal, referred to as current, so as to maximize its correlation coefficient with another signal, the reference.</li>
+                            <li class="fragment fade-in"> Let \(u^{(k)}(x_l)\) and \(u^{(m)}(x_n)\) be the recordings of the response in the \(k^{\text{th}}\) and \(m^{\text{th}}\) directions at locations \(x_l\) and \(x_n\), respectively. Combination of direction and location defines a specific dof, \(u^{(k)}(x_l){=}u_i\) and \(u^{(m)}(x_n){=}u_j\). The empirical cross-correlation function over time interval \([0,T]\): \({C_{ij}}_T(\tau) = \frac{1}{T} \int_0^T u_i(t) u_j(t+\tau) \textrm{d}t \stackrel{T \to \infty}{\longrightarrow}  
+{C_{ij}}^{\textrm{av}} (\tau)= \left< {C_{ij}}_{\tilde{T}}(\tau) \right>\)</li>
+                            <li class="fragment fade-in"> In the SHM context, SM is not applied directly to the time domain cross-correlations but rather to their Fourier transforms: 
+                                \(A^\#_{ij}(\nu) = \int {C_{ij}}_T(\tau) e^{\imath 2 \pi \tau \nu} d\tau,\, \#=r,\,c\)</li>
+                            <li class="fragment fade-in"> The matrix \(A^\#(\nu)\) is symmetric so it admits a symmetric singular value decomposition (SVD), \(A^\#(\nu) = U^\#(\nu)\Sigma^\#(\nu)U^{^\#,T}(\nu)\)</li>
+                            <li class="fragment fade-in"> The frequencies at which the first singular value admit peaks correspond to the natural frequencies of the structure while the first singular vector at the corresponding frequency is identified as the modal shape associated to this natural frequency. </li>
+                            <li class="fragment fade-in"> To monitor variations in the natural frequency \(\nu\), SM maximizes the correlation coefficient \(C_s(\Delta \nu)=\dfrac{\int_{\nu_1}^{\nu_2}  \sigma_1^c(\nu+\Delta \nu) \sigma_1^r(\nu) \textrm{d}\nu}{\sqrt{\int_{\nu_1}^{\nu_2}  (\sigma_1^c(\nu+\Delta \nu))^2 \textrm{d}\nu \int_{\nu_1}^{\nu_2}  (\sigma_1^r(\nu))^2 \textrm{d}\nu}}.\)</li>
+                            <li class="fragment fade-in"> SM shown to be less sensitive to environmental fluctuations, amenable to direct integration within smart sensors and embedded electronics.</li>
+                       </ul>
+                        <div id="div1">
+                            - C. Tsogka, E. Daskalakis, G. Comanducci, F. Ubertini, The stretching method for vibration-based structural health monitoring of civil structures., Computer-Aided Civil and Infrastructure Engineering, Vol. 32, Issue 4, pp. 288–303, 2017. 
+                        </div>
+                    </section>
+                    <section data-background-video="media/sde_quake_2.mp4" data-background-video-loop>
+                        <h3>Model updating</h3>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in"> Sensitivity-based element-by-element updating procedure</li>
+                            <li class="fragment fade-in"> Spatial distribution using piecewise linear functions, defined as:\(\psi_s(x)=\left(H[x-x_{s-1}]-H[x-x_{s}]\right)\frac{x-x_{s-1}}{\Delta x}+\left(H[x-x_{s}]-H[x-x_{s+1}]\right)\frac{\Delta x-x-x_{s}}{\Delta x},\)</li>
+                            <li class="fragment fade-in"> common for elastic (Young's modulus) and inertial (mass density) properties: \(E(x)=E_0\sum\limits_{s=1}^S a_s \psi_s(x)\text{ and }\rho(x)=\rho_0\sum\limits_{s=1}^S a_s \psi_s(x).\)</li>
+                            <li class="fragment fade-in"> Objective function \(f\) to be minimized over the \(S\) design variables \(a_s\): \(f(a_s)=(\nu_1(a_s)-\tilde{\nu}_1)^2+\left(\frac{\nu_2(a_s)}{\nu_1(a_s)}-\tilde{r}_{21}\right)^2\).</li>
+                            <li class="fragment fade-in"> Use of the limited-memory BFGS gradient algorithm, needing derivative of the objective function \(f\) with respect to \(a_s\): \(\frac{\partial f}{\partial a_s}=2(\nu_1-\tilde{\nu}_1)\frac{\partial \nu_1}{\partial a_s}+\frac{2}{\nu_1^3}(\tilde{r}_{21}\nu_1-\nu_2)(\nu_2\frac{\partial \nu_1}{\partial a_s}-\nu_1\frac{\partial \nu_2}{\partial a_s})\),</li>
+                            <li class="fragment fade-in"> where \(\frac{\partial \nu_i}{\partial a_s}\) the sensitivity indexes for the eigenfrequencies. The dependence of a given eigenfrequency \(\omega_i{=}2\pi\nu_i\) on design variable \(a_s\):\(\frac{\partial \omega_i}{\partial a_s}=\frac{1}{2\omega_i m_i^{\ast}}\phi_i^T\left(\frac{\partial K}{\partial a_s}-\omega_i^2 \frac{\partial M}{\partial a_s} \right)\phi_i\)</li>
+                            <li class="fragment fade-in"> Finally we take advantage of sensitivities on a set of variables (i.e., \(\frac{\partial K}{\partial E},\frac{\partial K}{\partial \rho}\) and \(\frac{\partial M}{\partial E},\frac{\partial M}{\partial \rho}\)) given by the mathematical (finite element) model: \(\frac{\partial \omega_i}{\partial \alpha_s}=\frac{\partial \omega_i}{\partial E}\frac{\partial E}{\partial \alpha_s}+\frac{\partial \omega_i}{\partial \rho}\frac{\partial \rho}{\partial \alpha_s}=\frac{1}{2\omega_i m_i^{\ast}}\phi_i^T\left(\frac{\partial K}{\partial E}-\omega_i^2 \frac{\partial M}{\partial E} \right)\phi_i\frac{\partial E}{\partial a_s}+\frac{1}{2\omega_i m_i^{\ast}}\phi_i^T\left(\frac{\partial K}{\partial \rho}-\omega_i^2 \frac{\partial M}{\partial \rho} \right)\phi_i\frac{\partial \rho}{\partial a_s}\)</li>
+                       </ul>
+                    </section>
+                    
+                    <section>
+                        <h3>Calibrated model-measured response match: displacements</h3>
+                        <img src="media/SNtrD.png" height="400" width="800">
+                    </section>
+                    
+                    <section>
+                        <h3>Calibrated model-measured response match: velocities</h3>
+                        <img src="media/SNtrV.png" height="400" width="800">
+                    </section>
+                </section>
+
+                <section>
+                    <section><h2>Time Reversal in Structural Analysis</h2>
+                        <div id="div1">
+                            - C.G. Panagiotopoulos, M.I. Mavrikis, G.E. Stavroulakis, Computational study of imaging techniques on elastic wave reversibility in beams, 12\(^{\text{th}}\) HSTAM International Congress on Mechanics (12thHSTAM). Thessaloniki, Greece. 22-25 September, 2019.
+                        </div>
+                        <div id="div1">
+                            - M.I. Mavrikis, C.G. Panagiotopoulos, G.E. Stavroulakis, Computational time reversal imaging in frame structures, 8\(^{\text{th}}\) International Young Scientists Conference in Computational Science (poster). Heraklion, Greece. 24-28 June, 2019.
+                        </div>
+                        <div id="div1">
+                            - M.I. Mavrikis thesis in Technical University of Crete (ongoing, joint supervision)
+                        </div>
+                    </section>
+                    <section><h2>Computational time reversal for SHM</h2>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in"> Time reversal can be used to solve certain classes of inverse wave problems.</li>
+                            <li class="fragment fade-in"> It is based on the reversibility property of wave propagation phenomena in nondissipative media.</li>
+                            <li class="fragment fade-in"> An important consequence of this property is that one can "time-reverse" developed signals, by letting them propagate back in time to the location of the source that emitted them originally. If the original source is very local, this process is called refocusing.</li>
+                            <li class="fragment fade-in"> It can be used for the solution of other types of inverse problems, including obstacle (scatterer) identification, damage identification in structures (nondestructive testing) and undersurface geophysical structure identification.</li>
+                            <li class="fragment fade-in"> In the presence of damping it has been numerically observed that still time reversal can be utilized with possible delay of refocusing.</li>
+                        </ul>
+                    </section>
+                    <section data-background-video="media/Trintro.mp4">
+                        \(\scriptscriptstyle \begin{align}
+                        \kappa GA\left(\frac{\partial \psi}{\partial x}-\frac{\partial^2 v}{\partial x^2}\right)+\rho A \frac{\partial^2 v}{\partial t^2}{=}w(x,t),\quad
+                        \kappa GA\left(\frac{\partial v}{\partial x}-\psi\right)+EI\frac{\partial^2 \psi}{\partial x^2}-\rho I\frac{\partial^2 \psi}{\partial t^2}{=}\mu(x,t).
+                        \end{align}\)
+                        <h3>Forward problem </h3>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in">From some source point a pulse excitation is emitted at time \(t_0\)</li>
+                            <li class="fragment fade-in">Response is captured on a finite number of receivers for total duration time \(T\)</li>
+                            <li class="fragment fade-in">Each receiver is defined by its location and direction of recording (d.o.f.)</li>
+                        </ul>
+                        <h3 class="fragment fade-in">Backward problem</h3>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in">The signal (response) on each receiver is reversed in time</li>
+                            <li class="fragment fade-in">The reversed in time signal is then re-emitted as excitation</li>
+                            <li class="fragment fade-in">Refocusing happens at time \(T{-}t_0\)</li>
+                            <li class="fragment fade-in">Refocusing appeared on the location of the source</li>
+                        </ul>
+                        <h3 class="fragment fade-in">Further</h3>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in">A scatterer might be considered as a secondary source</li>
+                            <li class="fragment fade-in">The main objective was the study of the SNR for frame structures</li>
+                        </ul>
+                    </section>
+                    
+                    <section data-background-video="media/sde_2d_1.mp4">
+                        <h3>Configurations studied </h3><ul style="font-size:20px">
+                            <li class="fragment fade-in">One dimensional beam</li>
+                            <li class="fragment fade-in">Two dimensional frame structure</li>
+                            <li class="fragment fade-in">Both source and damage localization problems have been studied</li>
+                            <li class="fragment fade-in">Noise in the data has been considered </li>
+                            <li class="fragment fade-in">Damping has been also taken into account</li>
+                        </ul>
+                        <h3>Computer simulation and numerical solution </h3><ul style="font-size:20px">
+                            <li class="fragment fade-in">Conventional finite elements for the Timoshenko beam theory has been used</li>
+                            <li class="fragment fade-in">The \(\beta\)-Newmark method has been adopted for the time integration of equations of motion</li>
+                            <li class="fragment fade-in">Higher order FEM approximations should be more appropriate for high frequency response</li>
+                            <li class="fragment fade-in">An explicit formulation would be of high interest</li>
+                        </ul>
+                    </section>
+                    
+                    <!--<section  data-background-image="media/Y_SNRs.png" data-background-opacity="0.5"><h3 id="blackfontSec">Signal to Noise Ratio</h3>-->
+                    <section>
+                        <h3>Imaging variable</h3><ul style="font-size:20px">
+                            <li class="fragment fade-in">Displacements: \(u_x,u_y,\psi\)</li>
+                            <li class="fragment fade-in">Velocities: \(\dot{u}_x,\dot{u}_y,\dot{\psi}\)</li>
+                            <li class="fragment fade-in">Some norm: \(I_{eucl}(t)=w_e(u_x^2+u_y^2+\psi^2)+w_k(\dot{u}_x^2+\dot{u}_y^2+\dot{\psi}^2)\)</li>
+                            <li class="fragment fade-in">Energy density: <div>\(
+I_{ed}(t)=\frac{1}{2}\left( E A\left(\frac{\partial u}{\partial x}\right)^2+\kappa G A\left(\frac{\partial v}{\partial x}-\psi\right)^2+E I\left(\frac{\partial \psi}{\partial x}\right)^2\right)+\frac{1}{2}\left( \rho A\left(\frac{\partial u}{\partial t}\right)^2+\rho A\left(\frac{\partial v}{\partial t}\right)^2+\rho I \left(\frac{\partial \psi}{\partial t}\right)^2\right)
+\)</div>
+                            <li class="fragment fade-in">... or some approximate variant: <div>\(
+\tilde{I}_{ed}(t)=w_{et}(\frac{EA + \kappa GA}{2})\left( (\frac{\Delta u_{x}}{L})^{2} + (\frac{\Delta u_{y}}{L})^{2} \right) + w_{er}EI(\frac{\Delta \psi}{L})^{2}+w_{kt}\rho A(\dot{u}_x^{2}+\dot{u}_y^{2}) + w_{kr}\rho I\dot{\psi}^{2}
+\)</div>
+                            </li><li class="fragment fade-in">... or some crude approximate variant: <div>\(
+\tilde{I}_{ed}(t)=w_{et}(\frac{EA + \kappa GA}{2})\left( u_{x}^{2} + u_{y}^{2} \right) + w_{er}EI\psi^{2}+w_{kt}\rho A(\dot{u}_x^{2}+\dot{u}_y^{2}) + w_{kr}\rho I\dot{\psi}^{2} 
+\)</div>
+                            </li>
+                        </ul>
+                        <!--<h3>Stopping criteria</h3><ul style="font-size:20px">
+                            <li class="fragment fade-in">Shannon entropy</li>
+                            <li class="fragment fade-in">Bounded variation \(L^1\) norm</li>
+                            <li class="fragment fade-in">Local measure \(L^2\) norm</li>
+                        </ul>-->
+                        <h3>Signal to Noise Ratio</h3>
+                        <ul style="font-size:20px">
+                            <li class="fragment fade-in">Signal to noise ratio, important quantity defined as the value of the image at the source (defect) location divided by other peak values of the image.</li>
+                            <!--<div  class="fragment fade-in"> <img src="media/Y_SNRs.png" alt="caption" width="400" height="300"> <img src="media/Y_SNRs.png" alt="caption" width="400" height="300"></div>-->
+                            <li class="fragment fade-in">SNR may serve as an index to determine optimum sensors placement</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h3>2D Source localization</h3>
+                        <img src="media/2DFrameStructure_1.png"  height="400" width="800">
+                    </section>
+                    
+                    <section>
+                        <h3>SNR</h3>
+                        <img src="media/SNRs.png"  height="400" width="800">
+                    </section>
+                    
+                    <section>
+                        <h3>OPTIMAL SNR</h3>
+                        <img src="media/PlotOfTheBestSNR.png"  height="350" width="700">
+                        <table style="font-size:20px" class="fragment fade-in">
+                        <tr>
+                          <th># Recs/Opt.set</th> <th>A</th>  <th>B</th>  <th>C</th>  <th>D</th> <th>B</th>
+                        </tr>
+                        <tr>
+                          <td>2</td> <td>\(\scriptstyle y_{3}, y_{2}\)</td>
+                        </tr>
+                        <tr>
+                          <td>4</td> <td>\(\scriptstyle y_{3}, y_{2}\)</td> <td>\(\scriptstyle y_{8}, x_{8}\)</td>
+                        </tr>
+                        <tr>
+                          <td>6</td> <td>\(\scriptstyle x_{8}, y_{4}\)</td> <td>\(\scriptstyle y_{3}, y_{2}\)</td>  <td>\(\scriptstyle x_{6}, x_{2}\)</td>
+                        </tr>
+                        <tr>
+                          <td>8</td> <td>\(\scriptstyle x_{3}, y_{4}\)</td> <td>\(\scriptstyle x_{6}, y_{8}\)</td> <td>\(\scriptstyle x_{4}, y_{2}\)</td> <td>\(\scriptstyle y_{6}, x_{2}\)</td>
+                        </tr>
+                        <tr>
+                          <td>10</td> <td>\(\scriptstyle y_{3}, y_{2}\)</td> <td>\(\scriptstyle y_{8}, x_{8}\)</td> <td>\(\scriptstyle x_{7}, y_{6}\)</td> <td>\(\scriptstyle x_{4}, x_{2}\)</td> <td>\(\scriptstyle y_{7}, x_{6}\)</td>
+                        </tr>
+                      </table>
+                    </section>
+                    
+                    <section>
+                        <h3>Optimal placement for 2 receivers</h3>
+                        <img src="media/2recs.png" height="400" width="800">
+                    </section>
+                    
+                    <section>
+                        <h3>Optimal placement for 4 receivers</h3>
+                        <img src="media/4recs.png"  height="400" width="800">
+                    </section>
+                    
+                    <section>
+                        <h3>Optimal placement for 6 receivers</h3>
+                        <img src="media/6recs.png"  height="400" width="800">
+                    </section>
+                    
+                    <section>
+                        <h3>Optimal placement for 8 receivers</h3>
+                        <img src="media/8recs.png"  height="400" width="800">
+                    </section>
+                    
+                    <section>
+                        <h3>Optimal placement for 10 receivers</h3>
+                        <img src="media/10recs.png"  height="400" width="800">
+                    </section>
+                    
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Acoustic Emission in Elastic Medium</h2>
+                        <div id="div1">
+                            - Tomáš Roubíček, Christos G. Panagiotopoulos, Chrysoula Tsogka, Explicit time-discretisation of elastodynamics with some inelastic processes at small strains, (Preprint  <a href="https://arxiv.org/abs/1903.11654" target="_blank">arXiv no.1903.11654.</a> ) SIAM J. Numer. Anal., submitted.
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Acoustic Emission</h3>
+                        <ol style="font-size:20px">
+                            <li class="fragment fade-in">The study of elastic waves, involving linear elasticity with variation in time, is called elastodynamics.</li>
+                            <li class="fragment fade-in">An elastic wave is a type of mechanical wave that propagates in elastic or viscoelastic materials.</li>
+                            <li class="fragment fade-in">When they occur in the earth as the result of an earthquake or other disturbance, elastic waves are usually called seismic waves.</li>
+                            <li class="fragment fade-in">Extension to nonlinear waves in elastic or inelastic media is possible and always a challenge, both from computational and analysis viewpoints.</li>
+                        </ol>
+                         <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            The goal here is to define an appropriate numerical scheme capable to solve problems of wave propagation in elastic medium considering possible dissipative processes on the boundary (e.g. surface damage, crack).
+                        </div>
+                         <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            Implementation of such an algorithm provides us with a computational tool in order to numerically solve problems of Acoustic Emission.
+                        </div>
+                         <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            Acoustic emission is the phenomenon of radiation of acoustic (elastic) waves in solids that occurs when a material undergoes irreversible changes in its internal structure.
+                        </div>
+                         <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            The waves generated by acoustic emission are of practical interest in SHM, where is typically used to detect, locate and characterize damage. 
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Second order formulation of Elastodynamics</h3>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            The initial-boundary-value problem in mind is the linear elastodynamic at small strains:
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                        &\rho\ddot{u}-{\rm div}\mathbb{C} e(u)=f &&\text{on }\ \varOmega\ \text{ for }\ t\in[0,T],\\
+                        &[\mathbb{C} e(u)]\vec{n}+\mathbb{B} u=g&&\text{on }\ \varGamma\ \text{ for }\ t\in[0,T],\\
+                        &u|_{t=0}=u_0,\ \ \ \dot{u}|_{t=0}=v_0&&\text{on }\ \varOmega,
+                        \end{align}\)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            with \(\varrho>0\) a mass density, \(\mathbb{C}\) a symmetric positive definite 4th-order elasticity tensor, \(e(u)=\frac{1}{2}(\nabla u)^\top{+}\frac{1}{2}\nabla u\) the small-strain tensor, \(\mathbb{B}\) a symmetric positive semidefinite 2nd-order tensor determining the elastic support on the boundary, \(f\) the bulk force, \(g\) the surface loading, \(u_0\) the prescribed initial displacement, \(v_0\) initial velocity, and \(T>0\) a fixed time horizon.
+                        </div>
+                        
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            The above set of equations in abstract form:
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                        \mathcal{T}'\ddot{u}+\mathcal{W}' u=\mathcal{F_u}'(t)\ \ \text{ for }\ t\in[0,T],\ \ u|_{t=0}=u_0,\ \ \ \dot{u}|_{t=0}=v_0,
+                        \end{align}\)
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            where \(\mathcal{T}\) is the kinetic energy, \(\mathcal W\) is the stored energy, and \(\mathcal F\) is the external force, while \((\cdot)'\) denotes the Gateaux derivative.
+                        </div>
+                    </section>
+                    <section>
+                        <h3>First order formulation of Elastodynamics</h3>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            We rewrite equations of elastodynamics in the velocity/stress formulation, i.e. terms of \(v=\dot{u}\) and of the stress \(\sigma=\mathbb{C} e(u)\), eliminating the displacement \(u\), further we consider the rate form of the surface equation together with appropriate initial conditions:
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                        &\rho\dot{v}-{\rm div}\sigma=f &&\text{on }\ \varOmega\ \text{ for }\ t\in[0,T],\\
+                        &\dot{\sigma}\vec{n}+\mathbb{B} v=\dot{g}&&\text{on }\ \varGamma\ \text{ for }\ t\in[0,T],\\
+                        &v|_{t=0}=v_0,\ \ \ \sigma|_{t=0}=\sigma_0&&\text{on }\ \varOmega,
+                        \end{align}\)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            after having establish some solution for the velocity field \(v\), if necessary, we can then define the respective displacement field \(u\) by integrating in time velocities. 
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                        In the abstract form, when writing \(\mathcal W=\mathscr{W}\circ E\) with \(E\) denoting the linear operator \(u\mapsto(e,w):=(e(u),u|_\varGamma)\):
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                        &&&\mathcal T'\dot{v}+E^*\varSigma=F(t)&&\text{ for }\ t\in[0,T],&&v|_{t=0}^{}=v_0,\ \ \ \ \text{ and }\ \
+                        \\&&&\dot{\varSigma}=\mathscr{W}'Ev+\dot{G}(t) &&\text{ for }\ t\in[0,T], &&\varSigma|_{t=0}^{}=\varSigma_0:=\mathscr{W}'Eu_0,&&&&
+                        \end{align}\)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                         where the "generalized" stress \(\varSigma=\mathscr{W}'Eu=(\mathbb{B} e(u),\mathbb{B} u|_\varGamma)\) contains, beside the bulk stress tensor, also the traction stress vector.
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <h3>Internal variables and their dissipative evolution</h3>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             The concept of internal variables has a long tradition and opens wide options for material modelling while the internal parameters are subjected to 1st-order evolution flow rules. The system equations, in the 1st order velocity/proto-stress formulation, is thus enhanced as:
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                        &\dot{\varSigma}=\mathfrak CEv+\dot{G}(t) && \text{ for }\ t\in[0,T],\ \ && \\    
+                        &\mathcal T'\dot{v}+E^*S =F(t)\ \ \text{ with }\ \ S=\mathfrak C^*\varPhi_\varSigma'(\varSigma,z)\!\!\!\!\!\!&& \text{ for }\ t\in[0,T],\ \ \\
+                        &\partial\varPsi(\dot z)+\varPhi_z'(\varSigma,z)  \ni0&& \text{ for }\ t\in[0,T],\\
+                        &\varSigma|_{t=0}=\varSigma_0:=\mathfrak CEu_0+G(0)\,,\ \ \ v|_{t=0}=v_0\,, \ \ z|_{t=0}=z_0.
+                        \end{align}\)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            Where \(\mathfrak C\) stands for a "generalized" elasticity tensor.</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            The inclusion (\(\ni\)) refers to a possibility that the convex (pseudo)potential of dissipative forces \(\varPsi\) may be nonsmooth and then its subdifferential \(\partial\varPsi\) can be multivalued.</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            \(\varSigma\) may not directly enter the balance of forces and is thus to be called rather as some "proto-stress", while the actual generalized stress will be denoted by \(S\).</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                            \(\varPhi_\varSigma'(\varSigma,z)\) is in a position of a "generalized" strain and, when multiplied by \(\mathfrak C^*\), it becomes a  generalized stress.</div>
+                    </section>
+                    
+                    <section>
+                        <h3>A three-step staggered time discretisation</h3>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             we devise the leap-frog discretisation of the first two equations combined with the fractional-step split (a staggered scheme) with a mid-point formula for the third one.
+                        </div>
+                        <ol style="width:40%; float:left; font-size:20px;" class="fragment fade-in">
+                            <li>calculate \(\varSigma_{\tau h}^{k+1}\):\(\frac{\varSigma_{\tau h}^{k+1}-\varSigma_{\tau h}^{k}}\tau= \mathfrak CE_h v_{\tau h}^{k}+D_{\tau h}^{k}\)</li>
+                            <li>calculate \(z_{\tau h}^{k+1}\):\(\partial\varPsi\Big(\frac{z_{\tau h}^{k+1}{-}z_{\tau h}^{k}}\tau\Big)+\varPhi_z'\Big(\varSigma_{\tau h}^{k+1},\frac{z_{\tau h}^{k+1}{+}z_{\tau h}^{k}}{2}\Big)\ni0\)</li>
+                            <li>calculate \(v_{\tau h}^{k+1}\):\(\mathcal{T}'\frac{v_{\tau h}^{k+1}{-}v_{\tau h}^{k}}{\tau}+E_h^\ast S_{\tau h}^{k+1}=F_{\tau h}^{k+1} \ \text{ with }\ S_{\tau h}^{k+1}=\mathfrak C^*\varPhi_\varSigma'(\varSigma_{\tau h}^{k+1},z_{\tau h}^{k+1})\)</li>
+                            <li>and \(u_{\tau h}^{k+1}\):<p>\(u_{\tau h}^{k+1}=u_{\tau h}^{k}+\tau v_{\tau h}^{k+1}\)</p></li>
+                        </ol>
+                    </section>
+                    
+                    <!--<section>
+                        <h3>Delamination on adhesive contacts</h3>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             The stored energy in terms of the strain and trace of the displacement is
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                        \mathscr W(e,w,\alpha)=\int_\varOmega\frac{1}{2}\mathbb{C} e{:}e\,\mathrm{d}x +\int_\varGamma\frac{1}{2}\gamma(\alpha)\mathbb{B}w{\cdot}w+\phi(\alpha)+\frac{\kappa}{2}|\nabla_S\alpha|^2\,\mathrm{d}S
+                        \end{align}\)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             Here \(\mathfrak C=\mathbb{C}\times\mathbb{B}\) and the proto-stress \(\varSigma:=(\sigma,\varsigma)\).
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             The stored energy expressed in terms of this proto-stress is
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                         \varPhi(\sigma,\varsigma,\alpha)=
+  \int_\varOmega\frac{1}{2}\mathbb{C}^{-1}\sigma{:}\sigma\,\mathrm{d} x
++\int_\varGamma\frac{1}{2}\gamma(\alpha)\mathbb{B}^{-1}\varsigma{\cdot}\varsigma\,\mathrm{d} S
+  +\!\!\!\!\int_\varGamma\phi(\alpha)+\frac{\kappa}{2}|\nabla_S\alpha|^2\,\mathrm{d} S\,.
+                        \end{align}\)</div>
+                    </section>-->
+                    
+                    <section data-background-image="media/trcreta2-figure.png" data-background-opacity="0.25" data-background-size="contain">
+                        <h3>Numerical example</h3>
+                        <ul style="font-size:20px;">
+                            <li  class="fragment fade-in"> Material of the specimen considered here is assumed to be homogeneous and isotropic</li>
+                            <li  class="fragment fade-in"> Square \(\varOmega\) with the part of the boundary amenable to damage and thus debonding from an outer support is located at the center of the bottom boundary.</li>
+                            <li  class="fragment fade-in"> We consider a damage variable such as to represent an irreversible damage process (no healing).</li>
+                            <li  class="fragment fade-in"> The excitation is imposed on the loaded side by normal stresses assumed to vary linearly and slowly in time. The tangent traction is assumed to be zero while, at the rest of the boundary, traction-free boundary conditions are assumed and enforced.</li>
+                            <li  class="fragment fade-in"> Two cases examined (a) a Mode-I delamination case and (b) a second Mode-II case.</li>
+                        </ul>
+                    </section>
+                    
+                    <section  data-background-video="media/mode1.webm" data-background-size="contain"  data-background-video-loop>
+                        <h3 id="positionh3">2D numerical experiment: Mode I</h3>
+                        <div></div>
+                    </section>
+                    
+                    <section  data-background-video="media/mode2.webm" data-background-size="contain"  data-background-video-loop>
+                        <h3 id="positionh3">2D numerical experiment: Mode II</h3>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Prediction of initiation and growth of cracks in composites</h2>
+                        <div id="div1">
+                            - Mar Muñoz-Reja, Luis Tavara, Vladislav Mantic and Christos Panagiotopoulos, Analysis of onset and growth of multiple debonds by means of an Abaqus implementation of the CCFFM+LEBIM, CMN 2019 - Congress on Numerical Methods in Engineering, Guimarães, July 1 - 3, 2019
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Composites</h3>
+                        <div>materials made from several constituents</div>
+                        <ul style="width:40%; float:left; font-size:20px;">
+                            <div class="fragment fade-in" style="font-size:30px">Main advantages</div>
+                            <li  class="fragment fade-in"> Properties improved with respect to the individual constituents</li>
+                            <li  class="fragment fade-in"> High mechanical properties per unit weight</li>
+                            <li  class="fragment fade-in"> Customizable properties</li>
+                        </ul>
+                        <ul style="width:40%; float:left; font-size:20px;">
+                            <div class="fragment fade-in" style="font-size:30px">Industrial use</div>
+                            <li  class="fragment fade-in">Aerospatial: New airliners A350 & B787 are made of more than 50% in composites</li>
+                            <li  class="fragment fade-in">Boatbuilding industry</li>
+                            <li  class="fragment fade-in">Civil engineering</li>
+                        </ul>
+                        <div class="fragment fade-in"  style="font-size:30px; margin-top:25px;" id="content2">
+                             Disadvantage... the high degree of uncertainty on the failure mechanisms partially counteracts their high properties and limits their use
+                             </div>
+                    </section>
+                    <section  data-background-image="media/PrincipalStress.gif" data-background-opacity="0.25" data-background-size="contain">
+                        <h3>Stress Criterion for fracture of Linear Elastic-Brittle Materials</h3>
+                         <ul style="font-size:20px" id="content2">
+                            <li id="blackfontSec">Principal stresses - (real) eigenvalues of symmetric stress tensor \(\sigma_{ij}(x)\) for \(x \in \Omega\): \(\sigma_1(x)\ge\sigma_2(x)\ge\sigma_3(x)\).</li>
+                            <li id="blackfontSec">Stress criterion (the maximum principal stress criterion) predicts breakage at a point \(x \in \Omega\) if \(\sigma_1(x) \ge \sigma_c\), where \(\sigma_c\) the tensile strength.</li>
+                            <li id="blackfontSec">This stress criterion works quite well in many practical situations.</li>
+                        </ul>
+                        <p class="fragment fade-in">However ...</p>
+                        <ol style="font-size:20px" id="content2" class="fragment fade-in">
+                            <li id="blackfontSec">Predicting fracture at a point for a given load, the size of the new crack is not defined</li>
+                            <li id="blackfontSec">Is not able to predict fracture at a stress singularity, where \(\sigma\rightarrow\pm\infty\)</li>
+                            <li id="blackfontSec">Any small load leads to fracture at a singular point according to the stress criterion</li>
+                            <li id="blackfontSec">Is not able to appropriately consider size effects</li>
+                        </ol>
+                    </section>
+                    <section  data-background-image="media/EdgeCrack2D.png" data-background-opacity="0.25" data-background-size="contain">
+                        <h3>Energy Criterion for fracture of Linear Elastic-Brittle Materials</h3>
+                         <ul style="font-size:20px" id="content2">
+                            <li id="blackfontSec">The solution for displacements \(u(x)\) is minimizer for the Potential energy: \(\Pi=\int_{\Omega}C_{ijkl}(x)u(x)_{i,j}u(x)_{k,l}\text{d}x-\int_{\Omega}f_i(x)u_i(x)\text{d}x-\int_{\partial \Omega_t}\tilde{t}_i(x)u_i(x)\text{d}s(x)\)</li>
+                            <li id="blackfontSec"> We may say that the above potential energy refers to a specific crack length \(\alpha\), that is \(\Pi(\alpha)\)</li>
+                            <li id="blackfontSec"> Fracture energy (fracture toughness) \(G_c\) is the specific energy required to create a new crack surface of unit area</li>
+                            <li id="blackfontSec"> Dissipated energy \(R(\alpha)= G_c \alpha\) required to create a new crack of area \(\alpha\) (the simplest situation of opening fracture mode I)</li>
+                            <li id="blackfontSec"> Griffith energy criterion (1st Law of Thermodynamics): a crack can propagate by an infinitesimal increase of its area \(\text{d}\alpha\) if a sufficient amount of potential energy is released \((\Pi\searrow \text{ for }\alpha\nearrow)\)</li>
+                            <li id="blackfontSec"> The energy release rate \(G(\alpha)=-\frac{\partial \Pi}{\partial \alpha}(\alpha)\ge\frac{\partial R}{\partial \alpha}(\alpha)\Leftrightarrow \frac{\partial (\Pi+R)}{\partial \alpha}(\alpha)\le0\)</li> 
+                            <li id="blackfontSec"> Griffth's energy criterion, for an infinitesimal crack advance, has many practical situations</li>
+                        </ul>
+                        <p class="fragment fade-in">However, does not predict well:</p>
+                        <ol style="font-size:20px" id="content2" class="fragment fade-in">
+                            <li id="blackfontSec"> propagation of short cracks</li>
+                            <li id="blackfontSec"> crack onset at stress concentrations  </li>
+                            <li id="blackfontSec"> crack onset at weak stress singularities</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <h3>Coupled Stress-Energy Criterion</h3>
+                        <p style="font-size:20px;">Several solutions to the above diffculties of both stress and energy criteria considered separately were proposed in the past (Theory of Critical Distances (TCD), Cohesize Zone Models (CZM), Energetic Solution (ES),etc.) - no one satisfactorily solves the problem of fracture onset in brittle materials</p>
+                        <ol style="font-size:20px">
+                            <li>The Coupled Stress-Energy Criterion of Finite Fracture Mechanics (CC-FFM) is based on two hypotheses:</li>
+                                <ul  style="list-style-type:disc">
+                                    <li>Hashin's (1996) hypothesis of a finite-crack onset, \(\Delta a > 0\). Time scale of crack onset is much shorter than the time scale where the whole structural problem under consideration is solved, i.e. from the point view of FFM the crack onset is instantaneous
+                                    </li>
+                                    <li>Leguillon's (2002) hypothesis that a necessary and sufficient condition for such a finite-crack onset \(\Delta a > 0\) is the simultaneous fulfillment of both stress & (incremental) energy criteria
+                                    </li>
+                                </ul>
+                            <li>Into the present framework [1]:</li>
+                                <ul  style="list-style-type:disc">
+                                    <li>Formulate the CC-FFM as an optimization problem</li>
+                                    <li>Setting up a general algorithm for numerical applications</li>
+                                    <li>Implementation for BEM analysis</li>
+                                </ul>
+                        </ol>
+                        <div id="div1">[1] Work still in progress, in collaboration with prof. Vladislav Mantic, University of Seville.</div>
+                    </section>
+                    <section>
+                        <h3>Principle of Minimum Total Energy subject to a Stress Condition (PMTE-SC)</h3>
+                        <ul  style="list-style-type:disc; font-size:20px;">
+                            <li>An alternative formulation of the CC-FFM has been proposed [1] to apply Principle of Minimum Total Energy subject to a Stress Condition (PMTE-SC) to the problem of crack onset and propagation for a given applied load (assuming quasistatic loading, and neglecting inertial forces):
+                            \(\begin{align} 
+                            &\text{minimize }\Pi(\Delta S_c)+R(\Delta S_c)\\
+                            &\text{subject to stress condition}
+                            \end{align}\)</li>
+                            <li>\(\Pi(\Delta S_c)\) - the potential energy for the given load and the considered new crack surface \(\Delta S_c\).</li>
+                            <li>\(R(\Delta S_c)\) - the total energy dissipated including the formation of this new crack surface \(\Delta S_c\).</li>
+                            <li>The stress constraint means that the total energy minimization considers only those new crack surfaces for which the stress criterion is verified for a given load.</li>
+                            <li> The stress criterion defines a condition on stresses at the potential new crack surface(s) of a finite (i.e. non-infinitesimal) extension. A quite general formulation can be written as: \(f(\sigma_{ij}(\cdot), \Delta S_c)\ge\sigma_c\), where \(f\) a homogeneous functional of degree 1.</li>
+                            <li> A mathematical formulation of Principle of Minimum Total Energy subject to a Stress Condition: 
+                                \(\begin{align}
+                                 &\underbrace{\text{min}}_{\alpha \in A_\sigma}\quad \Pi(\Delta S_c(\alpha))+R(\Delta S_c(\alpha))\\
+                                 &\text{where the feasible paramete-region}\\
+                                 &A_\sigma={\alpha \in A|f(\sigma_ij(\cdot),\Delta S_c(\alpha))\ge\sigma_c)}\subset A \subset \mathbb{R}^m
+                                \end{align}
+                                \)
+                            </li>
+                        </ul>
+                        <div id="div1">[1] Vladislav Mantic, Keynote lecture at the 16th European Conference on Composite Materials (ECCM16), 2014</div>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Three subsidiary topics</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>(1/3) Contact mechanics</h3>
+                        <div id="div1">
+                            - C.G. Panagiotopoulos, V. Mantic, I.G. Garcia, E. Graciani, Boundary integral formulation of frictionless contact problems based on an energetic approach and its numerical implementation by the collocation BEM. Frontiers in Built Environment - Computational Methods in Structural Engineering, 2018. (open access at <a href="https://doi.org/10.3389/fbuil.2018.00056" target="_blank">www.frontiersin.org/articles/10.3389/fbuil.2018.00056</a>)
+                        </div>
+                    </section>
+                     
+                    <section>
+                        <h3>Contact problems</h3>
+                        <ul  style="list-style-type:disc; font-size:20px;">
+                            <li>Contact problems often present in engineering applications (e.g. composites), represent one of the most important and interesting topics of mechanics.</li>
+                            <li>Contact between deformable bodies is a complex and inherently non-linear problem. </li>
+                            <li>It is essentially a boundary phenomenon which has a strong effect on stress and displacement fields in the vicinity of the boundary of the contacting bodies. </li>
+                            <li>Phenomenologically one of the simplest models of contact is given by the Signorini contact condition, that imposes the strict non-penetrability of the bodies in contact. </li>
+                        </ul>
+                    </section>
+                    
+                    <section  data-background-image="media/fbuil-04-00056-g004.jpg" data-background-opacity="0.25" data-background-size="contain">
+                        <h3>Numerical Solution as minimization of total potential energy problem</h3>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             We consider the case of linearized elasticity and assume that the elastic strain energy \(\mathscr{E}\) stored in the volume \(\Omega\) is
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                        \mathscr{E}(u)=\sum_{i=1}^N\int_{\Omega^{i}}\!\frac{1}{2}\mathbb C^{(i)}e^i(u^i){:}e^i(u^i)\,\mathrm{d} \Omega
+                        \end{align}\)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             We define the stored energy functional wich coincides with the total potential energy,
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(\begin{align}
+                        \Pi(t,u)=\!\left\{
+                        \begin{array}{ll}
+                        \mathscr{E}(u)-\mathscr{W}(t,u)
+                        &\text{if }u=u_{\text{D}}\text{ on }\Gamma_{\text{D}},\\[.0em]
+                        &[u]_{\text{n}}\ge-g_n\text{ on }\Gamma_{\text{C}},
+                        \\[.3em]
+                         \infty& \text{elsewhere,}
+                        \end{array}\right.
+                        \end{align}\)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             where, \(\mathscr{W}(t,u)=\sum_{i=1}^N\int_{\Gamma_{\text{N}}}u^i(x,t)\cdot p_{\text{N}}^i (x,t)\,\mathrm{d} S\).
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             A process \(u(t)\) is stable for \(\Pi\) at time \(t \in [0,T]\), if
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(
+                        \begin{align}
+                        \Pi(t,u(t))<+\infty \text{ and}\\
+                        \Pi(t,u)\leq \Pi(t,\tilde{u}(t)) \quad \forall \, \tilde{u}(t) \in \mathscr{U} 
+                        \end{align}
+                        \)</div>
+                    </section>
+                    
+                    <section data-background-video="media/Conprj.mp4" data-background-video-loop>
+                        <h3>Boundary Element Method</h3>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             We express the energy principles in boundary integral forms in order to state the problem as a boundary integral quadratic one and take advantage of the Boundary Element Method.
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(
+                        \begin{align}
+                        \Pi (t,u_{\text{C}})=
+                        \frac{1}{2}\int_{\Gamma_{\text{C}}}u_{\text{C}} \mathscr{M}_{\text{CC}}u_{\text{C}} \,\mathrm{d}S+\int_{\Gamma_{\text{C}}}u_{\text{C}} \Big(\mathscr{M}_{\text{CD}}u_{\text{D}}(t){+}\mathscr{M}_{\text{CN}}p_\text{N}(t) \Big)  \,\mathrm{d}S
+                        \end{align}
+                        \)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             The total potential energy for the assemblage of $N$ bodies is defined as follows,
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(
+                        \begin{align}
+                        \Pi(t,u_{\text{C}})=\sum_{i=1}^{N} \Pi^{i}(t,u_{\text{C}}^{i}).
+                        \end{align}
+                        \)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             After suitable discretization, the above equation may be given in the commonly defined algebraic form of a quadratic problem, that is:
+                        </div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:center;">
+                        \(
+                        \begin{align}
+                        f(\xi)=\frac{1}{2}\xi^T A \xi - \xi^T b.
+                        \end{align}
+                        \)</div>
+                        <div class="fragment fade-in"  style="font-size:20px; margin-top:25px; text-align:justify;">
+                             where \(A\) a square matrix while \(b,\xi\) vectors.
+                        </div>
+                    </section>
+                    <section>
+                        <h3>(2/3) Shape optimization for idiophone musical instruments</h3>
+                        <div id="div1">
+                            - Th. Krioneritis thesis in Technological Educational Institute of Crete  (ongoing, supervision)
+                        </div>
+                    </section>
+                    <section  section data-background-image="media/King_george_marimba.jpg" data-background-opacity="0.5" data-background-size="contain">
+                        <h3>Brief description</h3>
+                        <div style="font-size:20px; margin-top:25px; text-align:justify;">
+                        <ul  style="list-style-type:disc; font-size:20px;">
+                            <li class="fragment fade-in"> We use sensitivity analysis and model updating techniques taking advantage of the Finite Element Method in order to design bars of a marimba musical instrument with specific overtones.</li>
+                            <li class="fragment fade-in"> That means we define the shape of the bar in order to control its modal characteristics such as higher eigenfrequencies (usually the \(\omega_2\) and \(\omega_3\)) to have specific ratios with respect to the fundamental one. That is for the i\(^\text{th}\) eigenfrequency \(\omega_i\) to have the ratio \(\frac{\omega_i}{\omega_1}=r_i\) 
+                                <p><img src="media/marimba-bar.jpg" align="middle" height="100"></p>
+                            </li>
+                            <li class="fragment fade-in"> We solve the problem with identical techniques with what we previously presented for the case of model updating of the Egyptian lighthouse of Rethymno</li>
+                            <li class="fragment fade-in"> The difference between these two cases is that in the lighthouse case we use model updating for identification purposes while in the marimba case for design purposes.</li>
+                        </ul>
+                            <div id="div1" style="position: relative; top:10px;">The work is in progress, in discussion and partly collaboration with prof. S. Kouzoupis (Department of Music Technology and Acoustics)</div>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>(3/3) Symplegma</h3>
+                        <div id="div1">
+                            - C.G. Panagiotopoulos, Symplegma, a JVM implementation for numerical methods in computational mechanics.  Free & Open-Source Software Communities Meeting (FOSSCOMM 2018),  Heraklion, Greece, October 13-14, 2018 (<a href="http://thales.iacm.forth.gr/~pchr/SymplegmaFOSSCOMM2018.pdf" target="_blank">oral</a> , <a href="https://fosscomm2018.gr/fs2018/talk/7FXTCV/" target="_blank">https://fosscomm2018.gr/fs2018/talk/7FXTCV/</a> ).
+                        </div>
+                    </section>
+                    <section  data-background-iframe="http://symplegma.org/">
+                        <h3>Symplegma components</h3>
+                        <div  style="font-size:20px; margin-top:25px;">
+                             A Java/Groovy framework for numerical methods and computational mechanics in order to develop an integrated toolkit appropriate for:                             
+                            <ul  style="list-style-type:disc; font-size:20px;">
+                                <li><b>Teaching:</b> The feature of close integration between computational mechanics theory and computer implementation of this toolkit helps a student to understand basic concepts of the computational methods,</li>
+                                <li><b>Researching:</b> Helps researchers quickly develop and test their models, experiment data and algorithms.</li>
+                                <li><b>Engineering:</b> The performance and efficiency may be unsatisfied for industrial applications, however it is possible to use it for solution of specific problems of limited size.</li>
+                             </ul>
+                        </div>
+                        
+                        <div  style="font-size:20px; margin-top:25px;">
+                             Basic components are:
+                            <ul  style="list-style-type:disc; font-size:20px;">
+                                <li>><b>Climax:</b> A Java library for computational mechanics inluding BEM, FEM, FDM etc.</li>
+                                <li>><b>SDE:</b> An integrated working and development environment for the CLIMAX libary and similar components.</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="font-size:15px">Project's webpage at: <a href="http://symplegma.org/" target="_blank">http://symplegma.org/</a></div>
+                        <div style="font-size:15px">Project's blog at: <a href="https://symplegma.blogspot.com/" target="_blank">https://symplegma.blogspot.com/</a></div>
+                    </section>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Acknowledgment</h2>
+                        <div style="font-size:25px">Thanks to both of IACM's scientific contacts,</div> 
+                        <div style="font-size:25px">Prof. Charalampos Makridakis for his solid support</div> 
+                        <div style="font-size:25px">and</div> 
+                        <div style="font-size:25px">Prof. Chrysoula Tsogka for her constant collaboration.</div>
+                        <p>-------</p>
+                        <div style="font-size:25px;  text-align: justify;">Collaboration and inspiring discussions with prof. T. Roubicek (Charles University of Prague), prof. V. Mantic (University of Seville), prof. S. Kouzoupis (Technological Educational Institute of Crete, now Hellenic Mediterranean University) and prof. G.E. Stavroulakis (Technical University of Crete) are acknowledged.</div>
+                        <p>-------</p>
+                        <div style="font-size:25px;  text-align: justify;">The hospitality of University of Seville for a two-week visit is acknowledged.</div>
+                    </section>
+                </section>
+                    
+            </div>
+        </div>
+        <script src="reveal.js-3.8.0/js/reveal.js"></script>
+        <script>
+
+                Reveal.initialize({
+                        history: true,
+                        transition: 'linear',
+        controls: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                        math: {
+                                // mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                                config: 'TeX-AMS_HTML-full',
+                                TeX: {
+                                        Macros: {
+                                                R: '\\mathbb{R}',
+                                                set: [ '\\left\\{#1 \\; ; \\; #2\\right\\}', 2 ]
+                                        }
+                                }
+                        },
+
+        dependencies: [
+                    // Interpret Markdown in <section> elements
+                    { src: 'reveal.js-3.8.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js-3.8.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+                    // Syntax highlight for <code> elements
+                    { src: 'reveal.js-3.8.0/plugin/highlight/highlight.js', async: true },
+
+                    // Zoom in and out with Alt+click
+                    { src: 'reveal.js-3.8.0/plugin/zoom-js/zoom.js', async: true },
+
+                    // Speaker notes
+                    { src: 'reveal.js-3.8.0/plugin/notes/notes.js', async: true },
+
+                    // MathJax
+                    { src: 'reveal.js-3.8.0/plugin/math/math.js', async: true },
+
+            // TOC-Progress
+                    { src: 'reveal.js-3.8.0/plugin/toc-progress/toc-progress.js', async: true, callback: function() { toc_progress.initialize(); toc_progress.create(); } }
+                ]
+                });
+                
+        </script>
+    </body>
+</html>

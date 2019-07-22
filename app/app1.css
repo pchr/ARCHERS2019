@@ -1,0 +1,59 @@
+#bt1{
+   background-color: red;
+}
+
+#content{
+   text-shadow: 2px 2px 5px blue;
+   height: 150px;
+   border: 2px solid red;
+}
+
+#content2{
+   text-shadow: 2px 2px 5px yellow;
+}
+
+#div1{
+   font-size: 12px;
+   text-align: justify;
+}
+
+#vid1{
+    position: fixed;
+    right: 100px;
+    top: 20px;
+}
+
+#vid2{
+    position: fixed;
+    right: 75;
+    top: 20px;
+}
+
+#vid3{
+    position: fixed;
+    right: 50;
+    top: 20px;
+}
+
+#blackfontSec{
+    color: black;
+}
+
+#whitefontSec{
+    color: white;
+    text-align: justify;
+    margin-top: 2cm;
+}
+
+#whitefontSec_{
+    color: white;
+    text-align: justify;
+    margin-top: 1cm;
+}
+
+#positionh3{
+  position: relative;
+  bottom: 280px;
+}
+
+
